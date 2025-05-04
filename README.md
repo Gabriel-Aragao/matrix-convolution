@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este realiza algumas operações com arquivos de imagem a fim de demonstrar o uso de matrizes como estrutura de dados.
+Este projeto realiza algumas operações com arquivos de imagem com o intuito de demonstrar o uso de matrizes como estrutura de dados.
 
 ## Instalação
 
