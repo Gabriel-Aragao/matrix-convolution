@@ -25,7 +25,7 @@ def listar_imagens(extensoes):
                     imagens.append(file)
         return imagens
     except:
-        print(f"Ocorreu um erro ao listar os arquivos. Verifique a pasta e tente novamente. Erro: {e}")
+        print(f"Ocorreu um erro ao listar os arquivos. Verifique a pasta e tente novamente.")
         return None
 
 def selecionar_imagem(imagens):
@@ -63,7 +63,7 @@ def salvar_imagem(imagem, nome_base, extensao):
     try:
         cv2.imwrite(caminho_completo, imagem)
         print(f"\nImagem salva em: {caminho_completo}")
-    except Exception as e:
+    except:
         print(f"\nErro ao salvar a imagem em {caminho_completo}")
     
 
