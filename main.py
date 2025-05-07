@@ -1,9 +1,11 @@
 import os
 import cv2
 import cmapy
-import datetime
+import datetime                  
 import ndvi
 import tif
+import aumentar
+import diminuir
 
 IMAGEM_DIR = "imagens"
 
@@ -11,6 +13,9 @@ def exibir_menu():
     print("\nMenu Principal:")
     print("1. Combinar RGB e NIR para TIF")
     print("2. Transformar TIF(RGB+NIR) para NDVI")
+    print("3. Aumentar imagem")
+    print("4. Diminuir com média")
+    print("5. Diminuir com perda")
     print("0. Encerrar")
 
 def get_timestamp():
@@ -25,7 +30,7 @@ def listar_imagens(extensoes):
                     imagens.append(file)
         return imagens
     except:
-        print(f"Ocorreu um erro ao listar os arquivos. Verifique a pasta e tente novamente.")
+        print(f"Ocorreu um erro ao listar os arquivos. Verifique a pasta e tente novamente. Erro: {e}")
         return None
 
 def selecionar_imagem(imagens):
@@ -63,7 +68,7 @@ def salvar_imagem(imagem, nome_base, extensao):
     try:
         cv2.imwrite(caminho_completo, imagem)
         print(f"\nImagem salva em: {caminho_completo}")
-    except:
+    except Exception as e:
         print(f"\nErro ao salvar a imagem em {caminho_completo}")
     
 
@@ -110,7 +115,34 @@ while opcao != 0:
         
         salvar_imagem(nova_imagem, "NDVI", "png")
 
+    elif opcao == 3:
+        extensoes = ['png', 'jpg','jpeg']
+
+        print("\nEsta opção aumenta o tamanho da imagem.")
+        imagem = carregar_imagem(extensoes)
+        if imagem is None:
+            continue
+        nova_imagem = aumentar.aumentar_imagem(imagem)
+        salvar_imagem(nova_imagem, "Imagem_aumentada", "png")
     
+    elif opcao == 4:
+        extensoes = ['png', 'jpg','jpeg']
+        print("\nEsta opção diminui a imagem fazendo uma média dos pixels da região.")
+        imagem = carregar_imagem(extensoes)
+        if imagem is None:
+            continue
+        nova_imagem = diminuir.diminuir_com_media(imagem)
+        salvar_imagem(nova_imagem, "Imagem_reduzida", "png")
+
+    elif opcao == 5:
+        extensoes = ['png', 'jpg','jpeg']
+        print("\nEsta opção diminui a imagem escolhendo um entre 4 pixels.")
+        imagem = carregar_imagem(extensoes)
+        if imagem is None:
+            continue
+        nova_imagem = diminuir.diminuir_com_perda(imagem)
+        salvar_imagem(nova_imagem, "Imagem_reduzida", "png")
+
     elif opcao != 0:
         print("\nOpção Inválida!")
 
