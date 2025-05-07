@@ -6,6 +6,7 @@ import ndvi
 import tif
 import aumentar
 import diminuir
+import rotacionar
 
 IMAGEM_DIR = "imagens"
 
@@ -17,6 +18,8 @@ def exibir_menu():
     print("4. Aumentar com repetição")
     print("5. Diminuir com média")
     print("6. Diminuir com perda")
+    print("7. Rotacionar para direita")
+    print("8. Rotacionar para esquerda")
 
     print("0. Encerrar")
 
@@ -153,6 +156,24 @@ while opcao != 0:
             continue
         nova_imagem = diminuir.diminuir_com_perda(imagem)
         salvar_imagem(nova_imagem, "Imagem_reduzida", "png")
+    
+    elif opcao == 7:
+        extensoes = ['png', 'jpg','jpeg']
+        print("\nEsta opção diminui a imagem escolhendo um entre 4 pixels.")
+        imagem = carregar_imagem(extensoes)
+        if imagem is None:
+            continue
+        nova_imagem = rotacionar.rotacionar_imgdir(imagem)
+        salvar_imagem(nova_imagem, "Imagem_rotacionada", "png")
+
+    elif opcao == 8:
+        extensoes = ['png', 'jpg','jpeg']
+        print("\nEsta opção diminui a imagem escolhendo um entre 4 pixels.")
+        imagem = carregar_imagem(extensoes)
+        if imagem is None:
+            continue
+        nova_imagem = rotacionar.rotacionar_imgesq(imagem)
+        salvar_imagem(nova_imagem, "Imagem_rotacionada", "png")
     
 
 
