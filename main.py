@@ -13,9 +13,11 @@ def exibir_menu():
     print("\nMenu Principal:")
     print("1. Combinar RGB e NIR para TIF")
     print("2. Transformar TIF(RGB+NIR) para NDVI")
-    print("3. Aumentar imagem")
-    print("4. Diminuir com média")
-    print("5. Diminuir com perda")
+    print("3. Aumentar com media")
+    print("4. Aumentar com repetição")
+    print("5. Diminuir com média")
+    print("6. Diminuir com perda")
+
     print("0. Encerrar")
 
 def get_timestamp():
@@ -117,15 +119,24 @@ while opcao != 0:
 
     elif opcao == 3:
         extensoes = ['png', 'jpg','jpeg']
+        print("\nEsta opção diminui a imagem escolhendo um entre 4 pixels.")
+        imagem = carregar_imagem(extensoes)
+        if imagem is None:
+            continue
+        nova_imagem = aumentar.aumentar_com_media(imagem)
+        salvar_imagem(nova_imagem, "Imagem_Aumentada", "png")
+    
+    elif opcao == 4:
+        extensoes = ['png', 'jpg','jpeg']
 
         print("\nEsta opção aumenta o tamanho da imagem.")
         imagem = carregar_imagem(extensoes)
         if imagem is None:
             continue
-        nova_imagem = aumentar.aumentar_imagem(imagem)
+        nova_imagem = aumentar.aumentar_com_repeticao(imagem)
         salvar_imagem(nova_imagem, "Imagem_aumentada", "png")
     
-    elif opcao == 4:
+    elif opcao == 5:
         extensoes = ['png', 'jpg','jpeg']
         print("\nEsta opção diminui a imagem fazendo uma média dos pixels da região.")
         imagem = carregar_imagem(extensoes)
@@ -134,7 +145,7 @@ while opcao != 0:
         nova_imagem = diminuir.diminuir_com_media(imagem)
         salvar_imagem(nova_imagem, "Imagem_reduzida", "png")
 
-    elif opcao == 5:
+    elif opcao == 6:
         extensoes = ['png', 'jpg','jpeg']
         print("\nEsta opção diminui a imagem escolhendo um entre 4 pixels.")
         imagem = carregar_imagem(extensoes)
@@ -142,6 +153,8 @@ while opcao != 0:
             continue
         nova_imagem = diminuir.diminuir_com_perda(imagem)
         salvar_imagem(nova_imagem, "Imagem_reduzida", "png")
+    
+
 
     elif opcao != 0:
         print("\nOpção Inválida!")

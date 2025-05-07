@@ -6,20 +6,20 @@ def diminuir_com_media(imagem):
     for i in range(0, len(imagem_lista)-2, 2):
         nova_imagem.append([])
         for j in range(0, len(imagem_lista)-2, 2):
-            azul = (float(imagem_lista[i][j][0]) + 
-                    float(imagem_lista[i][j+1][0]) + 
-                    float(imagem_lista[i+1][j][0]) + 
-                    float(imagem_lista[i+1][j+1][0]))//4
+            azul = (int(imagem_lista[i][j][0]) + 
+                    int(imagem_lista[i][j+1][0]) + 
+                    int(imagem_lista[i+1][j][0]) + 
+                    int(imagem_lista[i+1][j+1][0]))//4
             
-            verde = (float(imagem_lista[i][j][1]) + 
-                    float(imagem_lista[i][j+1][1]) + 
-                    float(imagem_lista[i+1][j][1]) + 
-                    float(imagem_lista[i+1][j+1][1]))//4
+            verde = (int(imagem_lista[i][j][1]) + 
+                    int(imagem_lista[i][j+1][1]) + 
+                    int(imagem_lista[i+1][j][1]) + 
+                    int(imagem_lista[i+1][j+1][1]))//4
             
-            vermelho = (float(imagem_lista[i][j][2]) + 
-                    float(imagem_lista[i][j+1][2]) + 
-                    float(imagem_lista[i+1][j][2]) + 
-                    float(imagem_lista[i+1][j+1][2]))//4
+            vermelho = (int(imagem_lista[i][j][2]) + 
+                    int(imagem_lista[i][j+1][2]) + 
+                    int(imagem_lista[i+1][j][2]) + 
+                    int(imagem_lista[i+1][j+1][2]))//4
             nova_imagem[i//2].append([azul, verde, vermelho])
 
     print(f'\nTamanho da imagem antiga: {len(imagem_lista[0])} X {len(imagem_lista)}')
