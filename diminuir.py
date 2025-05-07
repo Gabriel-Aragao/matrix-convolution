@@ -30,7 +30,7 @@ def diminuir_com_perda(imagem):
     for i in range(0, len(imagem)-2, 2):
         nova_imagem.append([])
         for j in range(0, len(imagem)-2, 2):
-            nova_imagem[i//2].append(imagimagemem_lista[i][j])
+            nova_imagem[i//2].append(imagem[i][j])
             
     print(f'\nTamanho da imagem antiga: {len(imagem[0])} X {len(imagem)}')
     print(f'Tamanho da imagem nova: {len(nova_imagem[0])} X {len(nova_imagem)}')
