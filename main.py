@@ -132,7 +132,7 @@ while opcao != 0:
     elif opcao == 4:
         extensoes = ['png', 'jpg','jpeg']
 
-        print("\nEsta opção aumenta o tamanho da imagem.")
+        print("\nEsta opção aumenta o tamanho da imagem criando novos pixels com uma media dos vizinhos.")
         imagem = carregar_imagem(extensoes)
         if imagem is None:
             continue
@@ -159,7 +159,7 @@ while opcao != 0:
     
     elif opcao == 7:
         extensoes = ['png', 'jpg','jpeg']
-        print("\nEsta opção diminui a imagem escolhendo um entre 4 pixels.")
+        print("\nEsta opção rotaciona a imagem para a direita.")
         imagem = carregar_imagem(extensoes)
         if imagem is None:
             continue
@@ -168,7 +168,7 @@ while opcao != 0:
 
     elif opcao == 8:
         extensoes = ['png', 'jpg','jpeg']
-        print("\nEsta opção diminui a imagem escolhendo um entre 4 pixels.")
+        print("\nEsta opção rotaciona a imagem para a esquerda.")
         imagem = carregar_imagem(extensoes)
         if imagem is None:
             continue
